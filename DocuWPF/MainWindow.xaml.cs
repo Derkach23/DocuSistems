@@ -4,32 +4,45 @@ namespace DocuWPF.Views
 {
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public string UserName { get; set; } // Свойство для хранения имени пользователя
+
+        public MainWindow(string userName)
         {
             InitializeComponent();
-
+            DataContext = this;  // Привязываем данные
         }
 
         private void DocumentsButton_Click(object sender, RoutedEventArgs e)
         {
-            DocumentListView documentsWindow = new DocumentListView();
-            documentsWindow.Show();
-            this.Close(); // Закрываем главное окно, если хотите, чтобы было одно окно в одно время
+            // Загружаем представление документов в правую часть окна
+            MainContent.Content = new DocumentsView();
         }
 
         private void CategoriesButton_Click(object sender, RoutedEventArgs e)
         {
-            //CategoriesWindow categoriesWindow = new CategoriesWindow();
-            //categoriesWindow.Show();
-            // this.Close(); // Закрываем главное окно
-
+            // Загружаем представление категорий в правую часть окна
+            MainContent.Content = new CategoriesView();
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            SearchWindow searchWindow = new SearchWindow();
-            searchWindow.Show();
-            this.Close(); // Закрываем главное окно
+            // Загружаем представление поиска в правую часть окна
+            MainContent.Content = new SearchView();
+        }
+
+        private void DocumentOperationsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new DocumentOperationsView();
+        }
+
+        private void DocumentStatisticsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new DocumentStatisticsView();
+        }
+
+        private void UserProfileButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new UserProfileView();
         }
     }
 }

@@ -42,9 +42,10 @@ namespace DocuWPF.Views
             string password = PasswordBox.Password;
 
             // Примитивная валидация (можно подключить реальную БД с пользователями)
-            if (login == "admin" && password == "admin")
+            if (login == "admin" && password == "123")
             {
-                MainWindow mainWindow = new MainWindow();
+                // Передаем имя пользователя (в данном случае 'admin') в главное окно
+                MainWindow mainWindow = new MainWindow(login);
                 mainWindow.Show();
                 this.Close(); // Закрываем окно авторизации
             }
